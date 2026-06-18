@@ -46,7 +46,7 @@ const ProfileSettings = ({ user, onProfileUpdate }) => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/users/update-profile', {
+      const response = await fetch('https://scribeall-backend.onrender.com/api/users/update-profile', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

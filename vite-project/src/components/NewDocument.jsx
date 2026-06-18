@@ -35,7 +35,7 @@ export default function NewDocument({ user, onNavigate }) {
 
     try {
       // Step 1: Ingest audio and wait for AssemblyAI transcript text
-      const uploadResponse = await fetch('http://localhost:5000/api/documents/upload', {
+      const uploadResponse = await fetch('https://scribeall-backend.onrender.com/api/documents/upload', {
         method: 'POST',
         body: formData,
       });
@@ -45,7 +45,7 @@ export default function NewDocument({ user, onNavigate }) {
       }
 
       // Step 2: Request structured text formatting from AI template architect
-      const aiResponse = await fetch('http://localhost:5000/api/generate-document', {
+      const aiResponse = await fetch('https://scribeall-backend.onrender.com/api/generate-document', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -61,7 +61,7 @@ export default function NewDocument({ user, onNavigate }) {
       const aiData = await aiResponse.json();
 
       // Step 3: Run PDF compilation on backend, send email, and trigger database storage
-      const pdfResponse = await fetch('http://localhost:5000/api/documents/email-pdf', {
+      const pdfResponse = await fetch('https://scribeall-backend.onrender.com/api/documents/email-pdf', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

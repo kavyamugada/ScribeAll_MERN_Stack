@@ -11,7 +11,7 @@ export default function History({ user }) {
         setIsLoading(true);
         const activeUserId = user?.id || user?._id || "60c72b2f9b1d8b2bad123456";
         
-        const response = await fetch(`http://localhost:5000/api/documents/history/${activeUserId}`, {
+        const response = await fetch(`https://scribeall-backend.onrender.com/api/documents/history/${activeUserId}`, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         });
